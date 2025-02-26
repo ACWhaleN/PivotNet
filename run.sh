@@ -6,7 +6,7 @@ case "$1" in
     "train")
         CONFIG_NAME=$2
         NUM_EPOCHS=$3
-        python3 configs/"${CONFIG_NAME}".py -d 0-7 -b 1 -e ${NUM_EPOCHS} --sync_bn 8 --no-clearml
+        python3 configs/"${CONFIG_NAME}".py -d 0 -b 1 -e ${NUM_EPOCHS}  --no-clearml
         ;;
     "test")
         CONFIG_NAME=$2

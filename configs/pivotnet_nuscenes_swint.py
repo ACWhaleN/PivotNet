@@ -16,13 +16,13 @@ from mapmaster.utils.misc import get_param_groups, is_distributed
 
 class EXPConfig:
     
-    DATA_ROOT = "/data/dataset/public/nuScenes/"
+    DATA_ROOT = "data/nuscenes/"
     IMAGE_SHAPE = (900, 1600)
 
     map_conf = dict(
         dataset_name="nuscenes",
-        nusc_root="/data/dataset/public/nuScenes",
-        anno_root="/data/dataset/public/nuScenes/customer/pivot-bezier",
+        nusc_root="data/nuscenes",
+        anno_root="data/nuscenes/customer/pivot-bezier",
         split_dir="assets/splits/nuscenes",
         num_classes=3,
         ego_size=(60, 30),

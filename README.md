@@ -75,12 +75,13 @@ We build the released version of **PivotNet** upon [BeMapNet](https://github.com
     ```shell
     cd /path/to/pivotnet
     mkdir data
-    ln -s /any/path/to/your/nuscenes data/nuscenes
+    # ln -s /any/path/to/your/nuscenes data/nuscenes
+    ln -s /root/Projects/HDMap/dataset/nuscenes_mini data/nuscenes
     ```
   - Generate Pivot/Bezier-annotations from NuScenes's raw-annotations.
     ```shell
     cd /path/to/pivotnet
-    python3 tools/anno_converter/nuscenes/convert.py -d ./data # generate pivot-annotation only
+    python3 tools/anno_converter/nuscenes/convert.py -d ./data/nuscenes # generate pivot-annotation only
     OR python3 tools/anno_converter/nuscenes/convert.py -d ./data --bezier   # generate both pivot and bezier annotatation (more time needed)
     ```
 
@@ -123,8 +124,8 @@ We build the released version of **PivotNet** upon [BeMapNet](https://github.com
 
 - **a. Model Training**
   ```shell
-  bash run.sh train pivotnet_nuscenes_swint 30  # pivotnet, default: 8GPUs, bs=1, epochs=30
-  bash run.sh train bemapnet_nuscenes_swint 30  # bemapnet, default: 8GPUs, bs=1, epochs=30
+  # bash run.sh train pivotnet_nuscenes_swint 30  # pivotnet, default: 1GPUs, bs=1, epochs=30
+  # bash run.sh train bemapnet_nuscenes_swint 30  # bemapnet, default: 8GPUs, bs=1, epochs=30
   ```
 
 - **b. Model Evaluation**
