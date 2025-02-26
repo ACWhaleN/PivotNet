@@ -1,3 +1,5 @@
+# 导入所需库和包
+# Import necessary libraries and packages
 import os
 import numpy as np
 import pickle as pkl
@@ -5,6 +7,27 @@ from PIL import Image
 from torch.utils.data import Dataset
 
 class NuScenesMapDataset(Dataset):
+    """
+    NuScenesMapDataset类继承自torch.utils.data.Dataset，用于加载和预处理NuScenes地图数据集
+
+    The NuScenesMapDataset class inherits from torch.utils.data.Dataset, used for loading and preprocessing the NuScenes map dataset.
+
+    属性/Attributes
+    ----------
+    img_key_list : list
+        包含图像键名的列表，用于标识和提取所需的视图图像
+        List of image key names for identifying and extracting required view images
+    map_conf : dict
+        地图相关配置信息
+        Configuration information related to maps
+    transforms : function
+        数据预处理变换函数
+        Data preprocessing transformation function
+    tokens : list
+        数据切片标记的列表，用于索引各个数据样本
+        List of data slice tokens for indexing different data samples
+    """
+
     def __init__(self, img_key_list, map_conf, transforms, data_split="training"):
         super().__init__()
         self.img_key_list = img_key_list
@@ -22,6 +45,24 @@ class NuScenesMapDataset(Dataset):
         self.transforms = transforms
 
     def __getitem__(self, idx: int):
+        """
+        获取数据集中的一个样本
+
+        Get a sample from the dataset.
+
+        参数/Parameters
+        ----------
+        idx : int
+            样本的索引位置
+            Index position of the sample
+
+        返回/Returns
+        -------
+        item : dict
+            包含图像、目标、额外信息、外参和内参的数据字典
+            A dictionary containing images, targets, extra information, extrinsic and intrinsic data
+        """
+
         token = self.tokens[idx]
         sample = np.load(os.path.join(self.anno_root, f'{token}.npz'), allow_pickle=True)
         # images

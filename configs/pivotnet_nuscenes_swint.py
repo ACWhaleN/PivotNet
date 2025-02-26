@@ -1,3 +1,8 @@
+"""
+此模块定义了实验配置类和相关常量配置
+
+This module defines the experimental configuration class and related constant configurations.
+"""
 import os
 import torch
 import numpy as np
@@ -15,11 +20,29 @@ from mapmaster.utils.misc import get_param_groups, is_distributed
 
 
 class EXPConfig:
-    
+    """
+    实验配置类，用于设置数据集、模型、优化器等基本参数
+
+    The experimental configuration class, used to set basic parameters for dataset, models, and optimizer.
+
+    属性/Attributes
+    ----------
+    DATA_ROOT : str
+        数据集根目录 / The root directory for the dataset
+    IMAGE_SHAPE : tuple
+        输入图像的尺寸（高，宽）/ The shape of input images (height, width)
+
+    方法/Methods
+    ---------
+    无 / None
+    """
+
     DATA_ROOT = "data/nuscenes/"
     IMAGE_SHAPE = (900, 1600)
 
+    # 地图配置 / Map configuration
     map_conf = dict(
+        # 数据集名称 / Name of the dataset
         dataset_name="nuscenes",
         nusc_root="data/nuscenes",
         anno_root="data/nuscenes/customer/pivot-bezier",
